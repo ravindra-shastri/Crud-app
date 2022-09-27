@@ -1,23 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import Blog from './components/Blog';
+import BlogForm from './components/BlogForm';
 
 function App() {
+  const [data, setData] = useState(
+    JSON.parse(localStorage.getItem('data')) || []
+  );
+
+  const addBlog = (title, author) => {
+    let obj = { title, author };
+    setData(data.concat(obj));
+    localStorage.setItem('data', JSON.stringify(data.concat(obj)));
+  };
+
+  const removeBlog = (index) => {
+    const newData = [...data];
+    newData.splice(index, 1);
+    localStorage.setItem('data', JSON.stringify(newData));
+    setData(newData);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h2 className="header">
+        Blog List!
+      </h2>
+      <BlogForm addBlog={addBlog} />
+      <div>
+        {
+          data.map((blog, index) => (
+            <Blog
+              key={index}
+              index={index}
+              blog={blog}
+              removeBlog={removeBlog}
+            />
+          ))
+        }
+      </div>
     </div>
   );
 }

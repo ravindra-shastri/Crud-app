@@ -5,9 +5,71 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(185, 185, 185);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.header {
+  text-align: center;
+}
+
+.form-container {
+  width: 30%;
+  margin: 0 auto;
+}
+
+.form-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+input {
+  margin: .1rem;
+  padding: .4rem;
+  border: 1px solid aqua;
+  border-radius: .2rem;
+}
+
+.blog-ui,
+.edit-ui {
+  text-align: center;
+}
+
+.edit-ui {
+  margin-top: 2rem;
+}
+
+.remove-btn:hover {
+  background-color: rgb(200, 3, 3);
+  color: white;
+}
+
+.edit-btn {
+  padding: 0 1rem;
+}
+
+.edit-btn:hover {
+  background-color: green;
+  color: white;
+}
+
+.update-blog:hover {
+  background-color: green;
+  color: white;
+}
+
+.add-btn:hover {
+  background-color: green;
+  color: white;
+}
+
+button {
+  border-radius: .2rem;
+  margin: .2rem;
+  border: 1px solid aqua;
 }
